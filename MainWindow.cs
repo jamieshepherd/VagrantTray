@@ -20,6 +20,18 @@ namespace VagrantTray
         {
             InitializeComponent();
 
+            if (String.IsNullOrEmpty(Properties.Settings.Default.Boxes))
+            {
+                Console.WriteLine("We don't have values");
+            }
+            else
+            {
+                Console.WriteLine("We have values:");
+                Console.WriteLine(Properties.Settings.Default.Boxes);
+                Console.WriteLine("Trying to load them now...");
+                Program.LoadSettings();
+            }
+
             // Create tray menu
             trayMenu = new ContextMenu();
             trayIcon = new NotifyIcon();
@@ -118,6 +130,8 @@ namespace VagrantTray
             trayMenu.MenuItems.Add("-");
             trayMenu.MenuItems.Add("Preferences", OnExit);
             trayMenu.MenuItems.Add("Quit", OnExit);
+
+            Program.SaveSettings();
         }
         protected override void OnLoad(EventArgs e)
         {

@@ -8,18 +8,15 @@ namespace VagrantTray
 {
     public class Box
     {
-        public int boxID;
-        public String boxName, boxPath;
-        /*
-        public Boolean boxStatus
+        public int boxID { get; set; }
+        public String boxName { get; set; }
+        public String boxPath { get; set; }
+        public Boolean boxStatus { get; set; }
+
+        public Box()
         {
-            get;
-            set;
+            boxStatus = false;
         }
-         */
-
-        public Boolean boxStatus = false;
-
         public Box(int id, String name, String path, Boolean status)
         {
             boxID = id;
